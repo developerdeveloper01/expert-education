@@ -24,6 +24,17 @@ exports.addkycform = async (req, res) => {
   //}
 };
 
+exports.verifykyc = async (req, res) => {
+  await Kycform.findOneAndUpdate(
+    {
+      _id: req.params.id,
+    },
+    { $set: {status:true} },
+    { new: true }
+  )
+    .then((data) => resp.successr(res, data))
+    .catch((error) => resp.errorr(res, error));
+};
 exports.editkycform = async (req, res) => {
   await Kycform.findOneAndUpdate(
     {

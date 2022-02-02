@@ -42,6 +42,9 @@ const thisSchema = new Schema(
     selfie: {
       type: String,
     },
+    status: {
+      type: Boolean,
+    },
   },
   { timestamps: true }
 );
