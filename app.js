@@ -43,9 +43,9 @@ app.use(express.static(path.join(__dirname, "public")));
 //Use
 app.use("/", indexRouter);
 //app.use("/users", usersRouter);
-app.use("/api", (req, res) => {
-  res.send("api working");
-});
+// app.use("/api", (req, res) => {
+//   res.send("api working");
+// });
 app.use("/api", user);
 app.use("/api", staff);
 app.use("/api", kycform);
