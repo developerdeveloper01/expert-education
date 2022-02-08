@@ -16,15 +16,6 @@ const user = require("./routes/user");
 const staff = require("./routes/staff");
 const kycform = require("./routes/kycform");
 const course = require("./routes/course");
-// const role = require("./routes/role");
-// const inquiry = require("./routes/inquiry");
-// const providedip = require("./routes/providedip");
-// const plan = require("./routes/plan");
-// const dstnumber = require("./routes/dstnumber");
-// const cdrreport = require("./routes/cdrreport");
-// const cdrfetch = require("./routes/cdrfetch");
-// const agent = require("./routes/agent");
-// const chat = require("./routes/chat");
 
 
 var app = express();
@@ -49,15 +40,6 @@ app.use("/api", user);
 app.use("/api", staff);
 app.use("/api", kycform);
 app.use("/api", course);
-// app.use("/api", role);
-// app.use("/api", inquiry);
-// app.use("/api", providedip);
-// app.use("/api", plan);
-// app.use("/api", dstnumber);
-// app.use("/api", cdrreport);
-// app.use("/api", cdrfetch);
-// app.use("/api", agent);
-// app.use("/api", chat);
 
 mongoose
   .connect(process.env.DATABASE, {

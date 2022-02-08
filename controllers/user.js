@@ -11,6 +11,7 @@ exports.signup = async (req, res) => {
     email,
     mobile,
     password,
+    cnfmPassword,
     kyc_form
   } = req.body;
 
@@ -22,6 +23,7 @@ exports.signup = async (req, res) => {
     email: email,
     mobile: mobile,
     password: hashPassword,
+    cnfmPassword:hashPassword,
     kyc_form: kyc_form,
   });
 
