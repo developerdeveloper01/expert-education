@@ -17,7 +17,6 @@ const staff = require("./routes/staff");
 const kycform = require("./routes/kycform");
 const course = require("./routes/course");
 
-
 var app = express();
 
 // view engine setup
@@ -32,10 +31,12 @@ app.use(cors());
 
 app.use(express.static(path.join(__dirname, "public")));
 
-
 //Use
 app.use("/", indexRouter);
 //app.use("/users", usersRouter);
+// app.use("/api", (req, res) => {
+//   res.send("api working");
+// });
 app.use("/api", user);
 app.use("/api", staff);
 app.use("/api", kycform);
@@ -45,7 +46,7 @@ mongoose
   .connect(process.env.DATABASE, {
     useNewUrlParser: true,
     useNewUrlParser: true,
-    useUnifiedTopology: true,
+    useUnifiedTopology: true
   })
   .then(() => {
     console.log("DB connected");
