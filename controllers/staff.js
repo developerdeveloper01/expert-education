@@ -22,12 +22,11 @@ exports.addstaff = async (req, res) => {
   const hashPassword = await bcrypt.hash(password, salt);
 
   const newStaff = new Staff({
-    firstname: firstname,
-    lastname: lastname,
+    fullname: fullname,
     email: email,
     mobile: mobile,
     password: hashPassword,
-    confirmPassword :confirmPassword,
+    cnfmPassword :cnfmPassword,
     approvedstatus: approvedstatus
   });
 

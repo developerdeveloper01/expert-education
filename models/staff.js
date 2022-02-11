@@ -4,10 +4,7 @@ const Schema = mongoose.Schema;
 
 const thisSchema = new Schema(
   {
-    firstname: {
-      type: String,
-    },
-    lastname: {
+    fullname: {
       type: String,
     },
     email: {
@@ -19,7 +16,7 @@ const thisSchema = new Schema(
     password: {
       type: String,
     },
-    confirmPassword:{
+    cnfmPassword:{
 type :String
     },
     approvedstatus: {
