@@ -12,7 +12,7 @@ exports.addstaff = async (req, res) => {
     email,
     mobile,
     password,
-    confirmPassword,
+    cnfmPassword,
     approvedstatus,
   } = req.body;
 
