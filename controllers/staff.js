@@ -8,8 +8,7 @@ const staff = require("../models/staff");
 
 exports.addstaff = async (req, res) => {
   const {
-    firstname,
-    lastname,
+    fullname,
     email,
     mobile,
     password,
