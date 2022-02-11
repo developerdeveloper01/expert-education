@@ -49,7 +49,7 @@ exports.addstaff = async (req, res) => {
         );
         res.header("ad-token", token).status(200).json({
           status: true,
-          token: token,
+          ad_token: token,
           msg: "success",
           user: result,
         });
