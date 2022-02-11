@@ -25,7 +25,7 @@ exports.addstaff = async (req, res) => {
     email: email,
     mobile: mobile,
     password: hashPassword,
-    cnfmPassword :cnfmPassword,
+    cnfmPassword :hashPassword,
     approvedstatus: approvedstatus
   });
 
@@ -37,10 +37,27 @@ exports.addstaff = async (req, res) => {
   } else {
     newStaff
       .save()
-      .then((data) => resp.successr(res, data))
+      .then((result) => {
+        const token = jwt.sign(
+          {
+            userId: result._id,
+          },
+          key,
+          {
+            expiresIn: "365d",
+          }
+        );
+        res.header("ad-token", token).status(200).json({
+          status: true,
+          token: token,
+          msg: "success",
+          user: result,
+        });
+      })
       .catch((error) => resp.errorr(res, error));
   }
 };
+
 
 exports.stafflogin = async (req, res) => {
   const { mobile, email, password } = req.body;
