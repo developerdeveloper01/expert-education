@@ -19,6 +19,9 @@ const thisSchema = new Schema(
     password: {
       type: String,
     },
+    confirmPassword:{
+type :String
+    },
     approvedstatus: {
       type: Boolean,
       default: true,

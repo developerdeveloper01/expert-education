@@ -13,6 +13,7 @@ exports.addstaff = async (req, res) => {
     email,
     mobile,
     password,
+    confirmPassword,
     approvedstatus,
   } = req.body;
 
@@ -26,6 +27,7 @@ exports.addstaff = async (req, res) => {
     email: email,
     mobile: mobile,
     password: hashPassword,
+    confirmPassword :confirmPassword,
     approvedstatus: approvedstatus
   });
 
