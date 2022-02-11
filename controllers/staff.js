@@ -40,7 +40,7 @@ exports.addstaff = async (req, res) => {
       .then((result) => {
         const token = jwt.sign(
           {
-            userId: result._id,
+            staffId: staff._id,
           },
           key,
           {
