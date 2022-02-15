@@ -7,7 +7,7 @@ const { verifyToken } = require("../functions/admintoken");
 const {
   addstaff,
   stafflogin,
-  editstaff,
+  setting,
   viewonestaff,
   viewstaffbytoken,
   allstaff,
@@ -17,7 +17,7 @@ const {
 //Paths
 router.post("/admin/addstaff", addstaff);
 router.post("/admin/stafflogin", stafflogin);
-router.post("/admin/editstaff/:id", editstaff);
+router.post("/admin/setting/:id", setting);
 router.get("/admin/viewonestaff/:id", viewonestaff);
 router.get("/admin/viewonestaff",verifyToken, viewstaffbytoken);
 router.get("/admin/allstaff", allstaff);

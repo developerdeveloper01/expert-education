@@ -118,7 +118,7 @@ exports.stafflogin = async (req, res) => {
   }
 };
 
-exports.editstaff = async (req, res) => {
+exports.setting = async (req, res) => {
   await Staff.findOneAndUpdate(
     {
       _id: req.params.id,
