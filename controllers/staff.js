@@ -14,6 +14,11 @@ exports.addstaff = async (req, res) => {
     password,
     cnfmPassword,
     approvedstatus,
+    gender,
+    dob,
+    city,
+    institute,
+    
   } = req.body;
 
   //hashing password
@@ -26,7 +31,12 @@ exports.addstaff = async (req, res) => {
     mobile: mobile,
     password: hashPassword,
     cnfmPassword :hashPassword,
-    approvedstatus: approvedstatus
+    approvedstatus: approvedstatus,
+    gender :gender,
+    dob :dob,
+    city :city,
+    institute :institute,
+     
   });
 
   const findexist = await Staff.findOne({

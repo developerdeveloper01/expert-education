@@ -23,6 +23,19 @@ type :String
       type: Boolean,
       default: true,
     },
+    gender : {
+      type : String
+    },
+    dob :{
+      type : String
+    },
+    city : {
+      type : String
+    },
+    institute :{
+      type : String
+    },
+     
   },
   { timestamps: true }
 );

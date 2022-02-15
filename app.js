@@ -16,6 +16,8 @@ const user = require("./routes/user");
 const staff = require("./routes/staff");
 const kycform = require("./routes/kycform");
 const course = require("./routes/course");
+const category = require("./routes/category");
+
 
 var app = express();
 
@@ -41,6 +43,8 @@ app.use("/api", user);
 app.use("/api", staff);
 app.use("/api", kycform);
 app.use("/api", course);
+app.use("/api", category);
+
 
 mongoose
   .connect(process.env.DATABASE, {

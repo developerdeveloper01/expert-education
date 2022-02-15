@@ -27,3 +27,9 @@ router.get("/admin/allusers", allusers);
 router.get("/admin/deleteuser/:id", deleteuser);
 
 module.exports = router;
+
+
+
+
+
+//http://localhost:5000/api/admin/allusers

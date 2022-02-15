@@ -47,8 +47,8 @@ exports.signup = async (req, res) => {
         );
         res.header("auth-token", token).status(200).json({
           status: true,
-          token: token,
-          msg: "success",
+          "auth-token": token,
+           msg: "success",
           user: result,
         });
       })
