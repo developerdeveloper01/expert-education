@@ -1,5 +1,6 @@
 const Staff = require("../models/staff");
 const resp = require("../helpers/apiResponse");
+const cloudinary = require('cloudinary').v2
 const bcrypt = require("bcryptjs");
 const key = "verysecretkey";
 const jwt = require("jsonwebtoken");
@@ -14,8 +15,10 @@ exports.addstaff = async (req, res) => {
     password,
     cnfmPassword,
     approvedstatus,
+    image,
     gender,
     dob,
+    state,
     city,
     institute,
     
@@ -32,8 +35,10 @@ exports.addstaff = async (req, res) => {
     password: hashPassword,
     cnfmPassword :hashPassword,
     approvedstatus: approvedstatus,
+    image :image,
     gender :gender,
     dob :dob,
+    state : state,
     city :city,
     institute :institute,
      
@@ -45,6 +50,10 @@ exports.addstaff = async (req, res) => {
   if (findexist) {
     resp.alreadyr(res);
   } else {
+      if(req.files){
+        console.log(req.files);
+      }
+
     newStaff
       .save()
       .then((result) => {

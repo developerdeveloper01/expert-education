@@ -9,6 +9,7 @@ exports.addcourse = async (req, res) => {
     course_title: course_title,
     teacher_name: teacher_name,
     desc: desc,
+    videoImg :videoImg,
     video_link: video_link,
   });
   const findexist = await Course.findOne({ course_title: course_title });

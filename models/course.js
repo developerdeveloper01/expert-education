@@ -18,6 +18,9 @@ const thisSchema = new Schema(
     }],
     video_link: {
       type: String,
+    },
+    videoImg : {
+      type :String
     }
   },
   { timestamps: true }
