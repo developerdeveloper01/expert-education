@@ -24,7 +24,8 @@ type :String
       default: true,
     },
     gender : {
-      type : Boolean
+      type : Boolean,
+      default: "Men"
     },
     dob :{
       type : String

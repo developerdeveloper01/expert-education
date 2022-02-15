@@ -37,7 +37,7 @@ router.post("/admin/addstaff", addstaff);
 router.post("/admin/stafflogin", stafflogin);
 router.post("/admin/setting/:id",upload.single("image"), setting);
 router.get("/admin/viewonestaff/:id", viewonestaff);
-router.get("/admin/viewonestaff",verifyToken, viewstaffbytoken);
+router.get("/admin/viewstaffbytoken",verifyToken, viewstaffbytoken);
 router.get("/admin/allstaff", allstaff);
 router.get("/admin/deletestaff/:id", deletestaff);
 
