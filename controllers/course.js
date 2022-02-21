@@ -230,6 +230,15 @@ exports.allcourse = async (req, res) => {
     .catch((error) => resp.errorr(res, error));
 };
 
+exports.allcoursebyrecent = async (req, res) => {
+  await Course.find()
+    .sort({ createdAt: 1 })
+    .populate("teacher")
+    .sort({ sortorder: 1 })
+    .then((data) => resp.successr(res, data))
+    .catch((error) => resp.errorr(res, error));
+};
+
 exports.deletecourse = async (req, res) => {
   await Course.deleteOne({ _id: req.params.id })
     .then((data) => resp.deleter(res, data))
