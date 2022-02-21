@@ -7,20 +7,29 @@ const thisSchema = new Schema(
     course_title: {
       type: String,
     },
-    teacher_name: {
+    course_image: {
       type: String,
     },
     desc: {
       type: String,
     },
     pdf: [{
-      type: Number,
+      pdf_image: String,
+      pdf_file: String,
     }],
-    video_link: {
+    video_link: [{
+      video_image: String,
+      video_file: String,
+    }],
+    teacher: {
+      type: Schema.Types.ObjectId, ref: "staff"
+    },
+    category: {
       type: String,
     },
-    videoImg : {
-      type :String
+    popularity : {
+      type :Number,
+      default: 0
     }
   },
   { timestamps: true }

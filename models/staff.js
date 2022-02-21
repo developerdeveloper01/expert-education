@@ -16,34 +16,33 @@ const thisSchema = new Schema(
     password: {
       type: String,
     },
-    cnfmPassword:{
-type :String
+    cnfmPassword: {
+      type: String,
     },
     approvedstatus: {
       type: Boolean,
       default: true,
     },
-    gender : {
-      type : String,
-     },
-    dob :{
-      type : String
+    gender: {
+      type: String,
     },
-    state:{
-      type : String
+    dob: {
+      type: String,
     },
-    city : {
-      type : String
+    state: {
+      type: String,
     },
-    institute :{
-      type : String
+    city: {
+      type: String,
     },
-    image:{
-      type : String,
+    institute: {
+      type: String,
+    },
+    image: {
+      type: String,
       default:
         "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png",
-    }
-     
+    },
   },
   { timestamps: true }
 );
