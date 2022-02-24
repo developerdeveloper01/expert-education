@@ -82,7 +82,7 @@ router.post("/admin/editcourse/:id", editcourse);
 router.get("/admin/viewonecourse/:id", viewonecourse);
 router.get("/admin/viewonecoursep/:id", viewonecoursep);
 router.get("/admin/allcourse", allcourse);
-router.get("/admin/mycourses", mycourses);
+router.get("/admin/mycourses",verifyToken, mycourses);
 router.get("/admin/allcoursebyrecent", allcoursebyrecent);
 router.get("/admin/deletecourse/:id", deletecourse);
 
