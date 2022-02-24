@@ -13,6 +13,9 @@ const thisSchema = new Schema(
     desc: {
       type: String,
     },
+    long_desc: {
+      type: String,
+    },
     pdf: [{
       pdf_image: String,
       pdf_file: String,

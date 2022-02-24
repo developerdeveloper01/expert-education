@@ -66,9 +66,9 @@ exports.addstaff = async (req, res) => {
             expiresIn: "365d",
           }
         );
-        res.header("ad-token", token).status(200).json({
+        res.header("staff-token", token).status(200).json({
           status: true,
-          ad_token: token,
+          token: token,
           msg: "success",
           user: result,
         });
@@ -98,7 +98,7 @@ exports.stafflogin = async (req, res) => {
             expiresIn: "365d",
           }
         );
-        res.header("ad-token", token).status(200).send({
+        res.header("staff-token", token).status(200).send({
           status: true,
           ad_token: token,
           msg: "success",

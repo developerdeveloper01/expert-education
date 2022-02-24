@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { body, validationResult } = require("express-validator");
 const { check } = require("express-validator");
-const { verifyToken } = require("../functions/admintoken");
+const { verifyToken } = require("../functions/stafftoken");
 const multer = require("multer");
 const {} = require("multer");
 const fs = require("fs");
@@ -29,6 +29,7 @@ const {
   editcourse,
   viewonecourse,
   viewonecoursep,
+  mycourses,
   allcourse,allcoursebyrecent,
   deletecourse,
 } = require("../controllers/course");
@@ -81,6 +82,7 @@ router.post("/admin/editcourse/:id", editcourse);
 router.get("/admin/viewonecourse/:id", viewonecourse);
 router.get("/admin/viewonecoursep/:id", viewonecoursep);
 router.get("/admin/allcourse", allcourse);
+router.get("/admin/mycourses", mycourses);
 router.get("/admin/allcoursebyrecent", allcoursebyrecent);
 router.get("/admin/deletecourse/:id", deletecourse);
 

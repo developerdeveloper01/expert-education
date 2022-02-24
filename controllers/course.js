@@ -4,7 +4,7 @@ const { uploadFile } = require("../helpers/awsuploader");
 const fs = require("fs");
 
 exports.addcourse = async (req, res) => {
-  const { course_title, desc, teacher,category } = req.body;
+  const { course_title, desc, long_desc, category } = req.body;
 
   const findexist = await Course.findOne({ course_title: course_title });
   if (findexist) {
@@ -13,8 +13,9 @@ exports.addcourse = async (req, res) => {
     const newCourse = new Course({
       course_title: course_title,
       desc: desc,
+      long_desc: long_desc,
       teacher: req.staffId,
-      category:category
+      category: category,
     });
 
     if (req.files) {
@@ -94,7 +95,7 @@ exports.addcourse = async (req, res) => {
 };
 
 exports.addcoursebyadmin = async (req, res) => {
-  const { course_title, desc, teacher,category } = req.body;
+  const { course_title, desc, teacher, category } = req.body;
 
   const findexist = await Course.findOne({ course_title: course_title });
   if (findexist) {
@@ -104,7 +105,7 @@ exports.addcoursebyadmin = async (req, res) => {
       course_title: course_title,
       desc: desc,
       teacher: teacher,
-      category:category
+      category: category,
     });
 
     if (req.files) {
@@ -141,7 +142,6 @@ exports.addcoursebyadmin = async (req, res) => {
           if (getimgurl) {
             pdfObj.pdf_image = getimgurl.Location;
             //fs.unlinkSync(`../uploads/${req.files.pdf_image[i]?.filename}`);
-
           }
           newCourse.pdf[i] = pdfObj;
         }
@@ -223,6 +223,15 @@ exports.viewonecoursep = async (req, res) => {
 
 exports.allcourse = async (req, res) => {
   await Course.find()
+    .sort({ popularity: 1 })
+    .populate("teacher")
+    .sort({ sortorder: 1 })
+    .then((data) => resp.successr(res, data))
+    .catch((error) => resp.errorr(res, error));
+};
+
+exports.mycourses = async (req, res) => {
+  await Course.find({ teacher: req.staffId })
     .sort({ popularity: 1 })
     .populate("teacher")
     .sort({ sortorder: 1 })

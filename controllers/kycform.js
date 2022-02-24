@@ -13,10 +13,6 @@ exports.addkycform = async (req, res) => {
     driving_licence_num: driving_licence_num,
     passport_num: passport_num,
   });
-//   const findexist = await Kycform.findOne({ Kycformtitle: Kycformtitle });
-//   if (findexist) {
-//     resp.alreadyr(res);
-//   } else {
     newKycform
       .save()
       .then((data) => resp.successr(res, data))
