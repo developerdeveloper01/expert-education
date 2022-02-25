@@ -53,7 +53,6 @@ exports.addstaff = async (req, res) => {
       if(req.files){
         console.log(req.files);
       }
-
     newStaff
       .save()
       .then((result) => {
@@ -100,7 +99,7 @@ exports.stafflogin = async (req, res) => {
         );
         res.header("staff-token", token).status(200).send({
           status: true,
-          ad_token: token,
+          token: token,
           msg: "success",
           staff: staff,
         });
