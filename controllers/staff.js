@@ -139,6 +139,24 @@ exports.setting = async (req, res) => {
     .catch((error) => resp.errorr(res, error));
 };
 
+
+exports.settingbytoken = async (req, res) => {
+  await Staff.findOneAndUpdate(
+    {
+      staff: req.staffId,
+    },
+    { $set: req.body },
+    { new: true }
+  )
+  
+    .then((data) => resp.successr(res, data))
+    .catch((error) => resp.errorr(res, error));
+};
+
+
+ 
+
+
 exports.viewonestaff = async (req, res) => {
   await Staff.findOne({ _id: req.params.id })
     .then((data) => resp.successr(res, data))

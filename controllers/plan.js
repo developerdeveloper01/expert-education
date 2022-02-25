@@ -19,7 +19,7 @@ exports.addplan = async (req, res) => {
       .save()
       .then((data) => resp.successr(res, data))
       .catch((error) => resp.errorr(res, error));
-  }
+  } 
 };
 
 exports.editplan = async (req, res) => {

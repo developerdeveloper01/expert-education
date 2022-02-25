@@ -17,6 +17,10 @@ const staff = require("./routes/staff");
 const kycform = require("./routes/kycform");
 const course = require("./routes/course");
 const category = require("./routes/category");
+//const video = require("./routes/video");
+const notification = require("./routes/notification");
+
+
 
 
 var app = express();
@@ -40,6 +44,9 @@ app.use("/api", staff);
 app.use("/api", kycform);
 app.use("/api", course);
 app.use("/api", category);
+//app.use("/api",video)
+app.use("/api",notification)
+
 
 const fs = require('fs');
 const AWS = require('aws-sdk');
