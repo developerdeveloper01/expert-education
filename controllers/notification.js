@@ -48,7 +48,7 @@ exports.viewonenotification = async (req, res) => {
       .catch((error) => resp.errorr(res, error));
   };
   exports.allstaffNotification = async (req, res) => {
-    await Notification.find({staff: req.staffId})
+    await Notification.find({staffid: req.staffId})
       .sort({ sortorder: 1 })
       .then((data) => resp.successr(res, data))
       .catch((error) => resp.errorr(res, error));
