@@ -36,7 +36,7 @@ const {
 
 //Paths
 
-router.post("/admin/addstaff", addstaff);
+router.post("/admin/addstaff",upload.single("image"), addstaff);
 router.post("/admin/stafflogin", stafflogin);
 router.post("/admin/setting/:id",upload.single("image"), setting);
 router.post("/admin/settingbytoken",verifyToken,upload.single("image"), settingbytoken);
