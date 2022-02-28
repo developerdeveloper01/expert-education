@@ -35,6 +35,7 @@ const {
 } = require("../controllers/staff");
 
 //Paths
+
 router.post("/admin/addstaff", addstaff);
 router.post("/admin/stafflogin", stafflogin);
 router.post("/admin/setting/:id",upload.single("image"), setting);
