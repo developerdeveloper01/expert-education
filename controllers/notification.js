@@ -53,3 +53,9 @@ exports.viewonenotification = async (req, res) => {
       .catch((error) => resp.errorr(res, error));
   };
   
+  exports.clrnotification = async (req, res) => {
+    await Notification.deleteMany()
+      .then((data) => resp.deleter(res, data))
+      .catch((error) => resp.errorr(res, error));
+  };
+  
