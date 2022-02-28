@@ -162,6 +162,12 @@ exports.viewonestaff = async (req, res) => {
     .catch((error) => resp.errorr(res, error));
 };
 
+exports.viewonestaffbytoken = async (req, res) => {
+  await Staff.findOne({ _id: req.staffId })
+    .then((data) => resp.successr(res, data))
+    .catch((error) => resp.errorr(res, error));
+};
+
 exports.viewstaffbytoken = async (req, res) => {
   await Staff.findOne({ _id: req.staffId })
     .then((data) => resp.successr(res, data))

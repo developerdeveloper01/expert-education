@@ -28,6 +28,7 @@ const {
   setting,
   settingbytoken,
   viewonestaff,
+  viewonestaffbytoken,
   viewstaffbytoken,
   allstaff,
   deletestaff,
@@ -40,6 +41,8 @@ router.post("/admin/setting/:id",upload.single("image"), setting);
 router.post("/admin/settingbytoken",verifyToken,upload.single("image"), settingbytoken);
 
 router.get("/admin/viewonestaff/:id", viewonestaff);
+router.get("/admin/viewonestaffbytoken",verifyToken, viewonestaffbytoken);
+
 router.get("/admin/viewstaffbytoken",verifyToken, viewstaffbytoken);
 router.get("/admin/allstaff", allstaff);
 router.get("/admin/deletestaff/:id", deletestaff);
