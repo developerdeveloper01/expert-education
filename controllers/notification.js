@@ -47,8 +47,14 @@ exports.viewonenotification = async (req, res) => {
       .then((data) => resp.successr(res, data))
       .catch((error) => resp.errorr(res, error));
   };
-  exports.allNoti_bytoken = async (req, res) => {
+  exports.allstaffNotification = async (req, res) => {
     await Notification.find({staff: req.staffId})
+      .sort({ sortorder: 1 })
+      .then((data) => resp.successr(res, data))
+      .catch((error) => resp.errorr(res, error));
+  };
+  exports.alluserNotification = async (req, res) => {
+    await Notification.find({staff: req.userId})
       .sort({ sortorder: 1 })
       .then((data) => resp.successr(res, data))
       .catch((error) => resp.errorr(res, error));

@@ -1,7 +1,7 @@
 const key = "verysecretkey";
 const jwt = require("jsonwebtoken");
 
-exports.verifyToken = (req, res, next) => {
+exports.tokenverify = (req, res, next) => {
   let bearerHeader = req.headers["auth-token"];
    
   console.log(bearerHeader)
