@@ -19,10 +19,7 @@ const thisSchema = new Schema(
     cnfmPassword: {
       type: String,
     },
-    approvedstatus: {
-      type: Boolean,
-      default: true,
-    },
+    
     gender: {
       type: String,
     },
