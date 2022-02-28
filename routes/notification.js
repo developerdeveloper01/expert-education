@@ -11,7 +11,7 @@ router.get("/admin/viewonenotification/:id", viewonenotification);
 router.get("/admin/viewoneNot_bytoken",verifyToken, viewoneNot_bytoken);
 router.get("/admin/allNotification", allNotification);
 router.get("/admin/allNoti_bytoken",verifyToken, allNoti_bytoken);
-router.get("/admin/del_notification", del_notification);
+router.get("/admin/del_notification/:id", del_notification);
 
 
  
