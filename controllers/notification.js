@@ -41,8 +41,9 @@ exports.viewonenotification = async (req, res) => {
       .catch((error) => resp.errorr(res, error));
   };
 
-  exports.teacher_noti = async (req, res) => {
+  exports.noti_bytype = async (req, res) => {
     await Notification.find({usertype:req.params.id})
+    .sort({ sortorder: 1 })
       .then((data) => resp.successr(res, data))
       .catch((error) => resp.errorr(res, error));
   };
