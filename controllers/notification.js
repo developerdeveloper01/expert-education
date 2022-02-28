@@ -43,7 +43,7 @@ exports.viewonenotification = async (req, res) => {
 
   exports.teacher_noti = async (req, res) => {
     await Notification.find({usertype:req.params.id})
-      .then((data) => resp.deleter(res, data))
+      .then((data) => resp.successr(res, data))
       .catch((error) => resp.errorr(res, error));
   };
   exports.allNoti_bytoken = async (req, res) => {
