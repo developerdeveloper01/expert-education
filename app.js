@@ -20,7 +20,7 @@ const category = require("./routes/category");
 //const video = require("./routes/video");
 const notification = require("./routes/notification");
 
-
+const pdffile = require("./routes/pdffile");
 
 
 var app = express();
@@ -46,6 +46,8 @@ app.use("/api", course);
 app.use("/api", category);
 //app.use("/api",video)
 app.use("/api",notification)
+app.use("/api",pdffile)
+
 
 
 const fs = require('fs');
