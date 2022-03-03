@@ -19,7 +19,7 @@ exports.addCat = async (req, res) => {
 };
 
 exports.editCat = async (req, res) => {
-  await Course.findOneAndUpdate(
+  await Category.findOneAndUpdate(
     {
       _id: req.params.id,
     },
@@ -31,20 +31,20 @@ exports.editCat = async (req, res) => {
 };
 
 exports.viewoneCat = async (req, res) => {
-  await Course.findOne({ _id: req.params.id })
+  await Category.findOne({ _id: req.params.id })
     .then((data) => resp.successr(res, data))
     .catch((error) => resp.errorr(res, error));
 };
 
 exports.allCat = async (req, res) => {
-  await Course.find()
+  await Category.find()
     .sort({ sortorder: 1 })
     .then((data) => resp.successr(res, data))
     .catch((error) => resp.errorr(res, error));
 };
 
 exports.deleteCat = async (req, res) => {
-  await Course.deleteOne({ _id: req.params.id })
+  await Category.deleteOne({ _id: req.params.id })
     .then((data) => resp.deleter(res, data))
     .catch((error) => resp.errorr(res, error));
 };
