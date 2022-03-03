@@ -6,14 +6,8 @@ const key = "verysecretkey";
 const jwt = require("jsonwebtoken");
 
 exports.signup = async (req, res) => {
-  const {
-    fullname,
-    email,
-    mobile,
-    password,
-    cnfmPassword,
-    kyc_form
-  } = req.body;
+  const { fullname, email, mobile, password, cnfmPassword, kyc_form, status } =
+    req.body;
 
   const salt = await bcrypt.genSalt(10);
   const hashPassword = await bcryptjs.hash(password, salt);
@@ -23,8 +17,9 @@ exports.signup = async (req, res) => {
     email: email,
     mobile: mobile,
     password: hashPassword,
-    cnfmPassword:hashPassword,
+    cnfmPassword: hashPassword,
     kyc_form: kyc_form,
+    status: status,
   });
 
   const findexist = await User.findOne({
@@ -48,7 +43,7 @@ exports.signup = async (req, res) => {
         res.header("auth-token", token).status(200).json({
           status: true,
           "auth-token": token,
-           msg: "success",
+          msg: "success",
           user: result,
         });
       })
@@ -108,7 +103,7 @@ exports.setting = async (req, res) => {
 exports.changepass = async (req, res) => {
   await User.findOneAndUpdate(
     { _id: req.userId },
-    { $set: {password:req.body.password} },
+    { $set: { password: req.body.password } },
     { new: true }
   )
     .then((data) => resp.successr(res, data))
@@ -117,7 +112,7 @@ exports.changepass = async (req, res) => {
 exports.changepassid = async (req, res) => {
   await User.findOneAndUpdate(
     { _id: req.params.id },
-    { $set: {password:req.body.password} },
+    { $set: { password: req.body.password } },
     { new: true }
   )
     .then((data) => resp.successr(res, data))
@@ -136,19 +131,25 @@ exports.edituser = async (req, res) => {
 
 exports.allusers = async (req, res) => {
   await User.find()
-  .sort({ createdAt: 1 })
+    .sort({ createdAt: 1 })
+    .then((data) => resp.successr(res, data))
+    .catch((error) => resp.errorr(res, error));
+};
+exports.enrollusers = async (req, res) => {
+  await User.find({ status: "enroll" })
+    .sort({ createdAt: 1 })
     .then((data) => resp.successr(res, data))
     .catch((error) => resp.errorr(res, error));
 };
 
 exports.viewoneuser = async (req, res) => {
-  await User.findOne({_id: req.params.id})
+  await User.findOne({ _id: req.params.id })
     .then((data) => resp.successr(res, data))
     .catch((error) => resp.errorr(res, error));
 };
 
 exports.myprofile = async (req, res) => {
-  await User.findOne({_id: req.userId})
+  await User.findOne({ _id: req.userId })
     .then((data) => resp.successr(res, data))
     .catch((error) => resp.errorr(res, error));
 };

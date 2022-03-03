@@ -14,8 +14,8 @@ const thisSchema = new Schema(
     email: {
       type: String,
     },
-    mobile:{
-      type:Number
+    mobile: {
+      type: Number,
     },
     password: {
       type: String,
@@ -24,7 +24,12 @@ const thisSchema = new Schema(
       type: String,
     },
     kyc_form: {
-      type: Schema.Types.ObjectId, ref: "kycform"
+      type: Schema.Types.ObjectId,
+      ref: "kycform",
+    },
+    status: {
+      type: String,
+      default: "not enroll",
     },
   },
   { timestamps: true }
