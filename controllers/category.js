@@ -1,17 +1,17 @@
 const Category = require("../models/category");
 const resp = require("../helpers/apiResponse");
- 
+
 exports.addCat = async (req, res) => {
   const { catName } = req.body;
 
   const newCategory = new Category({
-    catName :catName
+    catName: catName,
   });
-  const findexist = await Inquiry.findOne({ catName: catName });
+  const findexist = await Category.findOne({ catName: catName });
   if (findexist) {
     resp.alreadyr(res);
   } else {
-    newInquiry
+    newCategory
       .save()
       .then((data) => resp.successr(res, data))
       .catch((error) => resp.errorr(res, error));
