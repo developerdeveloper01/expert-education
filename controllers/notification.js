@@ -47,14 +47,32 @@ exports.viewonenotification = async (req, res) => {
       .then((data) => resp.successr(res, data))
       .catch((error) => resp.errorr(res, error));
   };
+
+  exports.noti_bytypebytoken = async (req, res) => {
+    await Notification.find({usertype:req.params.id})
+    .sort({ sortorder: 1 })
+      .then((data) => resp.successr(res, data))
+      .catch((error) => resp.errorr(res, error));
+  };
+
+
   exports.allstaffNotification = async (req, res) => {
     await Notification.find({staffid: req.staffId})
       .sort({ sortorder: 1 })
       .then((data) => resp.successr(res, data))
       .catch((error) => resp.errorr(res, error));
   };
+
+  exports.all_userNotification = async (req, res) => {
+    await Notification.find({userid: req.userId})
+      .sort({ sortorder: 1 })
+      .then((data) => resp.successr(res, data))
+      .catch((error) => resp.errorr(res, error));
+  };
   exports.alluserNotification = async (req, res) => {
-    await Notification.find({staff: req.userId})
+    //const getuser = await User.findOne({ _id: req.userId });
+
+    await Notification.find({userid: req.userId})
       .sort({ sortorder: 1 })
       .then((data) => resp.successr(res, data))
       .catch((error) => resp.errorr(res, error));

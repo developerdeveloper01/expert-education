@@ -8,6 +8,10 @@ const resp = require("../helpers/apiResponse");
 exports.addvideo = async(req,res) =>{
     const {videoTitle,video_file,video_image}  = req.body
 
+    const newVideo = new Video({
+      videoTitle :videoTitle
+    })
+
     const findexist = await Video.findOne({ videoTitle: videoTitle });
     if(findexist){
         resp.alreadyr(res);
@@ -66,3 +70,9 @@ exports.addvideo = async(req,res) =>{
     } 
     
 
+    exports.getvideo = async (req, res) => {
+      await Video.find()
+        .sort({ sortorder: 1 })
+        .then((data) => resp.successr(res, data))
+        .catch((error) => resp.errorr(res, error));
+    };
