@@ -30,7 +30,7 @@ router.get("/admin/clrnotification", clrnotification);
  
  module.exports = router;
 
-
+//console
 
 
 
