@@ -35,6 +35,7 @@ const {
   viewstaffbytoken,
   allstaff,
   deletestaff,
+  approved_staff
 } = require("../controllers/staff");
 
 //paths
@@ -56,5 +57,7 @@ router.get("/admin/viewonestaffbytoken", verifyToken, viewonestaffbytoken);
 router.get("/admin/viewstaffbytoken", verifyToken, viewstaffbytoken);
 router.get("/admin/allstaff", allstaff);
 router.get("/admin/deletestaff/:id", deletestaff);
+router.get("/admin/approved_staff", approved_staff);
 
 module.exports = router;
+ 
