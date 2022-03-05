@@ -245,3 +245,11 @@ exports.deletestaff = async (req, res) => {
     .then((data) => resp.deleter(res, data))
     .catch((error) => resp.errorr(res, error));
 };
+
+
+exports.approved_staff = async (req, res, next) => {
+  await Staff.find({status: "true"})
+  .then((data) => resp.successr(res, data))
+    .catch((error) => resp.errorr(res, error));
+     
+};
