@@ -20,7 +20,7 @@ exports.addstaff = async (req, res) => {
     state,
     city,
     institute,
-    
+    approvedstatus
   } = req.body;
 
   //hashing password
@@ -39,7 +39,7 @@ exports.addstaff = async (req, res) => {
     state : state,
     city :city,
     institute :institute,
-     
+    approvedstatus :approvedstatus
   });
 
   const findexist = await Staff.findOne({
@@ -75,54 +75,114 @@ exports.addstaff = async (req, res) => {
 };
 
 
+// exports.stafflogin = async (req, res) => {
+//   const { mobile, email, password } = req.body;
+
+//   const staff = await Staff.findOne({
+//     $or: [{ mobile: mobile }, { email: email }],
+//   });
+//   if (staff) {
+//     console.log(staff);
+//     if (staff.approvedstatus == true ) {
+//       const validPass = await bcrypt.compare(password, staff.password);
+//       if (validPass) {
+//         const token = jwt.sign(
+//           {
+//             staffId: staff._id,
+//           },
+//           key,
+//           {
+//             expiresIn: "365d",
+//           }
+//         );
+//         res.header("staff-token", token).status(200).send({
+//           status: true,
+//           token: token,
+//           msg: "success",
+//           staff: staff,
+//         });
+//       } else {
+//         res.status(400).json({
+//           status: false,
+//           msg: "Incorrect Password",
+//           error: "error",
+//         });
+//       }
+//     } else {
+//       res.status(400).json({
+//         status: false,
+//         msg: "Profile is under verification",
+//         error: "error",
+//       });
+//     }
+//   } else {
+//     res.status(400).json({
+//       status: false,
+//       msg: "Staff Doesnot Exist",
+//       error: "error",
+//     });
+//   }
+// };
+
 exports.stafflogin = async (req, res) => {
+  // const errors = validationResult(req);
+  // if (!errors.isEmpty()) {
+  //   return res.status(400).json(errors);
+  // }
+
   const { mobile, email, password } = req.body;
 
-  const staff = await Staff.findOne({
-    $or: [{ mobile: mobile }, { email: email }],
-  });
-  if (staff) {
-    //console.log(staff);
-    if (staff.approvedstatus == true ) {
-      const validPass = await bcrypt.compare(password, staff.password);
-      if (validPass) {
-        const token = jwt.sign(
-          {
-            staffId: staff._id,
-          },
-          key,
-          {
-            expiresIn: "365d",
-          }
-        );
-        res.header("staff-token", token).status(200).send({
-          status: true,
-          token: token,
-          msg: "success",
-          staff: staff,
-        });
-      } else {
-        res.status(400).json({
-          status: false,
-          msg: "Incorrect Password",
-          error: "error",
-        });
-      }
+  // if(body('mobile')){
+  //   console.log(body('mobile'))
+  // }
+
+
+const staff = await Staff.findOne({
+  $or: [{ mobile: mobile }, { email: email }],
+})
+if (staff) {
+  //console.log(staff);
+  if (staff.approvedstatus == true ) {
+    const validPass = await bcrypt.compare(password, staff.password);
+    if (validPass) {
+      const token = jwt.sign(
+        {
+          staffId: staff._id,
+        },
+        key,
+        {
+          expiresIn: "365d",
+        }
+      );
+      res.header("staff-token", token).status(200).send({
+        status: true,
+        ad_token: token,
+        msg: "success",
+        staff: staff,
+      });
     } else {
       res.status(400).json({
         status: false,
-        msg: "Profile is under verification",
+        msg: "Incorrect Password",
         error: "error",
       });
     }
   } else {
     res.status(400).json({
       status: false,
-      msg: "Staff Doesnot Exist",
+      msg: "Profile is under verification",
       error: "error",
     });
   }
+} else {
+  res.status(400).json({
+    status: false,
+    msg: "Staff Doesnot Exist",
+    error: "error",
+  });
+}
 };
+
 
 exports.setting = async (req, res) => {
   await Staff.findOneAndUpdate(
@@ -183,3 +243,6 @@ exports.deletestaff = async (req, res) => {
     .then((data) => resp.deleter(res, data))
     .catch((error) => resp.errorr(res, error));
 };
+
+
+

@@ -2,7 +2,9 @@ const express = require("express");
 const router = express.Router();
 const { body, validationResult } = require('express-validator');
 const { check } = require('express-validator');
+//const { verifyToken } = require("../functions/stafftoken");
 const { verifyToken } = require("../functions/stafftoken");
+
 const multer  = require('multer')
 const fs = require('fs');
 if (!fs.existsSync("./uploads")) {
@@ -37,7 +39,7 @@ const {
 //Paths
 
 router.post("/admin/addstaff",upload.single("image"), addstaff);
-router.post("/admin/stafflogin", stafflogin);
+router.post("/admin/stafflogin",stafflogin);
 router.post("/admin/setting/:id",upload.single("image"), setting);
 router.post("/admin/settingbytoken",verifyToken,upload.single("image"), settingbytoken);
 
