@@ -60,3 +60,4 @@ router.get("/admin/deletestaff/:id", deletestaff);
 router.get("/admin/approved_staff", approved_staff);
 
 module.exports = router;
+//console
