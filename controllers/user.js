@@ -6,8 +6,16 @@ const key = "verysecretkey";
 const jwt = require("jsonwebtoken");
 
 exports.signup = async (req, res) => {
-  const { fullname, email, mobile, password, cnfmPassword, kyc_form, status } =
-    req.body;
+  const {
+    fullname,
+    email,
+    mobile,
+    password,
+    cnfmPassword,
+    kyc_form,
+    status,
+    user_type,
+  } = req.body;
 
   const salt = await bcrypt.genSalt(10);
   const hashPassword = await bcrypt.hash(password, salt);
@@ -20,6 +28,7 @@ exports.signup = async (req, res) => {
     cnfmPassword: hashPassword,
     kyc_form: kyc_form,
     status: status,
+    user_type: user_type,
   });
 
   const findexist = await User.findOne({
