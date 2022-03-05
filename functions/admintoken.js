@@ -1,7 +1,7 @@
 const key = "verysecretkey";
 const jwt = require("jsonwebtoken");
 
-exports.verifyToken = (req, res, next) => {
+exports.adminToken = (req, res, next) => {
   let token = req.headers["ad-token"];
 
   //console.log(token)
@@ -13,8 +13,7 @@ exports.verifyToken = (req, res, next) => {
     if (err) {
       return res.status(401).send({ message: "Unauthorized!" });
     }
-    req.staffId = decoded.staffId;
+    req.adminId = decoded.adminId;
     next();
   });
-
 };

@@ -33,6 +33,10 @@ const thisSchema = new Schema(
 
       //Enroll,Unenroll
     },
+    user_type: {
+      type: String,
+      // default: "u",
+    },
   },
   { timestamps: true }
 );
