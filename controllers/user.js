@@ -90,6 +90,46 @@ exports.login = async (req, res) => {
   }
 };
 
+exports.adminlogin = async (req, res) => {
+  const { mobile, email, password } = req.body;
+  const user = await User.findOne({
+    $or: [{ mobile: mobile }, { email: email }],
+  });
+  if (user) {
+    const validPass = await bcrypt.compare(password, user.password);
+    if (validPass) {
+      const token = jwt.sign(
+        {
+          adminId: user._id,
+        },
+        key,
+        {
+          expiresIn: 86400000,
+        }
+      );
+      res.header("ad-token", token).status(200).send({
+        status: true,
+        token: token,
+        msg: "success",
+        user: user,
+        user_type: "admin",
+      });
+    } else {
+      res.status(400).json({
+        status: false,
+        msg: "Incorrect Password",
+        error: "error",
+      });
+    }
+  } else {
+    res.status(400).json({
+      status: false,
+      msg: "admin Doesnot Exist",
+      error: "error",
+    });
+  }
+};
+
 exports.setting = async (req, res) => {
   await User.findOneAndUpdate(
     { _id: req.userId },

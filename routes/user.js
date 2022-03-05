@@ -4,6 +4,7 @@ const { tokenverify } = require("../functions/tokenverify");
 
 const {
   signup,
+  adminlogin,
   login,
   setting,
   changepass,
@@ -18,6 +19,7 @@ const {
 
 router.post("/user/signup", signup);
 router.post("/user/login", login);
+router.post("/user/adminlogin", adminlogin);
 
 router.post("/user/setting", tokenverify, setting);
 router.post("/user/changepass", tokenverify, changepass);

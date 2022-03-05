@@ -31,6 +31,10 @@ const thisSchema = new Schema(
       type: String,
       default: "not enroll",
     },
+    user_type: {
+      type: String,
+      // default: "u",
+    },
   },
   { timestamps: true }
 );
