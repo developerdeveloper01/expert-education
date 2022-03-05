@@ -69,14 +69,22 @@ exports.viewonenotification = async (req, res) => {
       .then((data) => resp.successr(res, data))
       .catch((error) => resp.errorr(res, error));
   };
-  exports.alluserNotification = async (req, res) => {
-    //const getuser = await User.findOne({ _id: req.userId });
 
-    await Notification.find({userid: req.userId})
-      .sort({ sortorder: 1 })
-      .then((data) => resp.successr(res, data))
-      .catch((error) => resp.errorr(res, error));
-  };
+
+  // exports.all_userNotification = async (req, res) => {
+  //   await Notification.find({userid: req.userId})
+  //     .sort({ sortorder: 1 })
+  //     .then((data) => resp.successr(res, data))
+  //     .catch((error) => resp.errorr(res, error));
+  // };
+  // exports.alluserNotification = async (req, res) => {
+  //   //const getuser = await User.findOne({ _id: req.userId });
+
+  //   await Notification.find({userid: req.userId})
+  //     .sort({ sortorder: 1 })
+  //     .then((data) => resp.successr(res, data))
+  //     .catch((error) => resp.errorr(res, error));
+  // };
 
   exports.del_notification = async (req, res) => {
     await Notification.deleteOne({ _id: req.params.id })

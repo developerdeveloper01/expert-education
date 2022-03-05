@@ -156,7 +156,7 @@ if (staff) {
       );
       res.header("staff-token", token).status(200).send({
         status: true,
-        ad_token: token,
+        token: token,
         msg: "success",
         staff: staff,
       });
@@ -246,3 +246,8 @@ exports.deletestaff = async (req, res) => {
 
 
 
+exports.approved_staff = async (req, res, next) => {
+  await Staff.find({ status: "true"})
+  .then((data) => resp.successr(res, data))
+  .catch((error) => resp.errorr(res, error));
+};

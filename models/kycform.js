@@ -3,6 +3,8 @@ const Schema = mongoose.Schema;
 
 const thisSchema = new Schema(
   {
+
+    userid: { type: Schema.Types.ObjectId, ref: "user" },
     gender: {
       type: String,
     },
@@ -10,7 +12,7 @@ const thisSchema = new Schema(
       type: String,
     },
     nationality: {
-      type: Number,
+      type: String,
     },
     aadhar_num: {
       type: String,
@@ -30,7 +32,13 @@ const thisSchema = new Schema(
     aadhar_back_img: {
       type: String,
     },
-    pan_img: {
+    front_img: {
+      type: String,
+    },
+    back_img: {
+      type: String,
+    },
+    selfie_img: {
       type: String,
     },
     driving_l_img: {

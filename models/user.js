@@ -29,7 +29,9 @@ const thisSchema = new Schema(
     },
     status: {
       type: String,
-      default: "not enroll",
+      default: "Unenroll",
+
+      //Enroll,Unenroll
     },
   },
   { timestamps: true }
