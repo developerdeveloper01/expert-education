@@ -184,6 +184,7 @@ exports.allusers = async (req, res) => {
     .then((data) => resp.successr(res, data))
     .catch((error) => resp.errorr(res, error));
 };
+
 exports.enrollusers = async (req, res) => {
   await User.find({ status: "enroll" })
     .sort({ createdAt: 1 })

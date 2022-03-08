@@ -21,43 +21,21 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+const { addpdf } = require("../controllers/pdffile");
 
-
-const {addpdf
-} = require("../controllers/pdffile");
-
-router.post("/admin/addpdf",upload.single("pdf_file") ,addpdf);
- 
-
- 
+router.post(
+  "/admin/addpdf",
+  upload.fields([
+    {
+      name: "pdf_file",
+    },
+    {
+      name: "pdf_image",
+    },
+  ]),
+  addpdf
+);
 
 module.exports = router;
 
-
-
-
-
 //http://localhost:5000/api/admin/allusers
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
