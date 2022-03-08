@@ -1,18 +1,20 @@
-const mongoose = require("mongoose")
-const Schema = mongoose.Schema
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const pdffileSchema  = new Schema (
-    {
-   pdf_title :{
-       type : String
-   },
+const pdffileSchema = new Schema(
+  {
+    pdf_title: {
+      type: String,
+    },
 
-pdf_file  : {
-    
-    type: String,
+    pdf: [
+      {
+        pdf_image: String,
+        pdf_file: String,
+      },
+    ],
   },
-},
-{ timestamps: true }
-)
+  { timestamps: true }
+);
 
-module.exports = mongoose.model("pdffile",pdffileSchema)
+module.exports = mongoose.model("pdffile", pdffileSchema);
