@@ -30,13 +30,16 @@ const {
   viewonecourse,
   viewonecoursep,
   mycourses,
-  allcourse,allcoursebyrecent,
+  allcourse,
+  allcoursebyrecent,
   deletecourse,
+  countcourse,
 } = require("../controllers/course");
 
 //Paths
 router.post(
-  "/admin/addcourse",verifyToken,
+  "/admin/addcourse",
+  verifyToken,
   upload.fields([
     {
       name: "course_image",
@@ -82,8 +85,9 @@ router.post("/admin/editcourse/:id", editcourse);
 router.get("/admin/viewonecourse/:id", viewonecourse);
 router.get("/admin/viewonecoursep/:id", viewonecoursep);
 router.get("/admin/allcourse", allcourse);
-router.get("/admin/mycourses",verifyToken, mycourses);
+router.get("/admin/mycourses", verifyToken, mycourses);
 router.get("/admin/allcoursebyrecent", allcoursebyrecent);
 router.get("/admin/deletecourse/:id", deletecourse);
+router.get("/admin/countcourse", countcourse);
 
 module.exports = router;

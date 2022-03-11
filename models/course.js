@@ -16,24 +16,39 @@ const thisSchema = new Schema(
     long_desc: {
       type: String,
     },
-    pdf: [{
-      pdf_image: String,
-      pdf_file: String,
-    }],
-    video_link: [{
-      video_image: String,
-      video_file: String,
-    }],
+    pdf: [
+      {
+        pdf_image: String,
+        pdf_file: String,
+      },
+    ],
+    video_link: [
+      {
+        video_image: String,
+        video_file: String,
+      },
+    ],
     teacher: {
-      type: Schema.Types.ObjectId, ref: "staff"
+      type: Schema.Types.ObjectId,
+      ref: "staff",
     },
-    category: {
-      type: String,
+    category_id: {
+      type: Schema.Types.ObjectId,
+      ref: "category",
     },
-    popularity : {
-      type :Number,
-      default: 0
-    }
+    video_id: {
+      type: Schema.Types.ObjectId,
+      ref: "video",
+    },
+    pdf_id: {
+      type: Schema.Types.ObjectId,
+      ref: "pdf",
+    },
+
+    popularity: {
+      type: Number,
+      default: 0,
+    },
   },
   { timestamps: true }
 );

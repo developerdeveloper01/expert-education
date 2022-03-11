@@ -4,7 +4,8 @@ const { uploadFile } = require("../helpers/awsuploader");
 const fs = require("fs");
 
 exports.addcourse = async (req, res) => {
-  const { course_title, desc, long_desc, category } = req.body;
+  const { course_title, desc, long_desc, category_id, video_id, pdf_id } =
+    req.body;
 
   const findexist = await Course.findOne({ course_title: course_title });
   if (findexist) {
@@ -15,7 +16,9 @@ exports.addcourse = async (req, res) => {
       desc: desc,
       long_desc: long_desc,
       teacher: req.staffId,
-      category: category,
+      category_id: category_id,
+      video_id: video_id,
+      pdf_id: pdf_id,
     });
 
     if (req.files) {
@@ -104,6 +107,7 @@ exports.addcoursebyadmin = async (req, res) => {
     const newCourse = new Course({
       course_title: course_title,
       desc: desc,
+
       teacher: teacher,
       category: category,
     });
@@ -251,5 +255,11 @@ exports.allcoursebyrecent = async (req, res) => {
 exports.deletecourse = async (req, res) => {
   await Course.deleteOne({ _id: req.params.id })
     .then((data) => resp.deleter(res, data))
+    .catch((error) => resp.errorr(res, error));
+};
+
+exports.countcourse = async (req, res) => {
+  await Course.countDocuments()
+    .then((data) => resp.successr(res, data))
     .catch((error) => resp.errorr(res, error));
 };

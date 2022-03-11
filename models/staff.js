@@ -19,7 +19,7 @@ const thisSchema = new Schema(
     cnfmPassword: {
       type: String,
     },
-    
+
     gender: {
       type: String,
     },
@@ -37,12 +37,12 @@ const thisSchema = new Schema(
     },
     image: {
       type: String,
-    //   default:
-    //     "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png",
-     },
+      //   default:
+      //     "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png",
+    },
     approvedstatus: {
-     // type: Boolean,
-     type: String,
+      type: Boolean,
+      //type: String,
       default: false,
     },
   },

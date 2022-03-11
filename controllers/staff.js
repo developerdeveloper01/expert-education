@@ -239,6 +239,11 @@ exports.allstaff = async (req, res) => {
     .then((data) => resp.successr(res, data))
     .catch((error) => resp.errorr(res, error));
 };
+exports.countstaff = async (req, res) => {
+  await Staff.countDocuments()
+    .then((data) => resp.successr(res, data))
+    .catch((error) => resp.errorr(res, error));
+};
 
 exports.deletestaff = async (req, res) => {
   await Staff.deleteOne({ _id: req.params.id })
@@ -246,8 +251,14 @@ exports.deletestaff = async (req, res) => {
     .catch((error) => resp.errorr(res, error));
 };
 
-exports.approved_staff = async (req, res, next) => {
-  await Staff.find({ status: "true" })
+exports.approved_staff = async (req, res) => {
+  await Staff.find({ approvedstatus: "true" })
+    .sort({ createdAt: 1 })
+    .then((data) => resp.successr(res, data))
+    .catch((error) => resp.errorr(res, error));
+};
+exports.countstaff = async (req, res) => {
+  await Staff.countDocuments()
     .then((data) => resp.successr(res, data))
     .catch((error) => resp.errorr(res, error));
 };

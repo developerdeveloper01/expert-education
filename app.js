@@ -19,8 +19,8 @@ const course = require("./routes/course");
 const category = require("./routes/category");
 const video = require("./routes/video");
 const notification = require("./routes/notification");
-// const comment = require("./routes/comment");
-// const comment1 = require("./routes/comment1");
+const comment = require("./routes/comment");
+const comment1 = require("./routes/comment1");
 const pdffile = require("./routes/pdffile");
 
 var app = express();
@@ -47,8 +47,8 @@ app.use("/api", category);
 app.use("/api", video);
 app.use("/api", notification);
 app.use("/api", pdffile);
-// app.use("/api", comment);
-// app.use("/api", comment1);
+app.use("/api", comment);
+app.use("/api", comment1);
 
 const fs = require("fs");
 const AWS = require("aws-sdk");
