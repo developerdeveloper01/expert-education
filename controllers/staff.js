@@ -138,7 +138,7 @@ exports.stafflogin = async (req, res) => {
 
   const staff = await Staff.findOne({
     $or: [{ mobile: mobile }, { email: email }],
-  }).populate("role");
+  })
   if (staff) {
     //console.log(staff);
     if (staff.approvedstatus == true ) {
