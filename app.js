@@ -22,7 +22,7 @@ const notification = require("./routes/notification");
 //const comment = require("./routes/comment");
 const comment1 = require("./routes/comment1");
 const pdffile = require("./routes/pdffile");
-const banner = require("./routes/banner");
+
 
 
 var app = express();
@@ -51,7 +51,6 @@ app.use("/api", notification);
 app.use("/api", pdffile);
 //app.use("/api", comment);
 app.use("/api", comment1);
-app.use("/api", banner);
 
 
 const fs = require("fs");
