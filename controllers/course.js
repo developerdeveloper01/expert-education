@@ -247,7 +247,7 @@ exports.allcoursebyrecent = async (req, res) => {
   await Course.find()
     .sort({ createdAt: 1 })
     .populate("teacher")
-    .sort({ sortorder: 1 })
+    .sort({ sortorder: 0 })
     .then((data) => resp.successr(res, data))
     .catch((error) => resp.errorr(res, error));
 };
@@ -258,8 +258,21 @@ exports.deletecourse = async (req, res) => {
     .catch((error) => resp.errorr(res, error));
 };
 
+exports.viewcoursebyteacherid = async (req, res) => {
+  await Course.find({ teacher: req.params.teacher })
+    .then((data) => resp.successr(res, data))
+    .catch((error) => resp.errorr(res, error));
+};
+
 exports.countcourse = async (req, res) => {
   await Course.countDocuments()
     .then((data) => resp.successr(res, data))
     .catch((error) => resp.errorr(res, error));
 };
+
+exports.countcoursebyteacherid = async (req, res) => {
+  await Course.countDocuments({ teacher: req.params.teacher })
+    .then((data) => resp.successr(res, data))
+    .catch((error) => resp.errorr(res, error));
+};
+

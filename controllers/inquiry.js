@@ -2,7 +2,7 @@ const Inquiry = require("../models/inquiry");
 const resp = require("../helpers/apiResponse");
 
 exports.addinquiry = async (req, res) => {
-  const { name, product,email,mobile, desc } = req.body;
+  const { name, product, email, mobile, desc } = req.body;
 
   const newInquiry = new Inquiry({
     name: name,

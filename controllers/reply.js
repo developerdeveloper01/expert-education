@@ -1,42 +1,47 @@
-const Comment1 = require("../models/comment1");
+const Reply = require("../models/reply");
 const resp = require("../helpers/apiResponse");
 
-exports.addcomm = async (req, res) => {
-  const { user_id, comment, staff_id } = req.body;
+exports.addreply = async (req, res) => {
+  const { reply, user_id, staff_id, user_id2 } = req.body;
 
-  const newComment1 = new Comment1({
+  // const salt = await bcrypt.genSalt(10);
+  //const hashPassword = await bcrypt.hash(password, salt);
+
+  const newReply = new Reply({
+    reply: reply,
     user_id: user_id,
+    user_id2: user_id2,
     staff_id: staff_id,
-    comment: comment,
   });
-  //const findexist = await Comment1.findOne({ comment: comment });
-  // if (findexist) {
-  //  resp.alreadyr(res);
-  // } else {
-  newComment1
+
+  //const findexist = await User.findOne({ comment: comment });
+
+  newReply
     .save()
     .then((data) => resp.successr(res, data))
     .catch((error) => resp.errorr(res, error));
-  // }
 };
-exports.allComment = async (req, res) => {
-  await Comment1.find()
+exports.allReply = async (req, res) => {
+  await Reply.find()
     .sort({ sortorder: 1 })
     .then((data) => resp.successr(res, data))
     .catch((error) => resp.errorr(res, error));
 };
-exports.viewoneComment = async (req, res) => {
-  await Comment1.findOne({ _id: req.params.id })
+
+exports.viewoneReply = async (req, res) => {
+  await Reply.findOne({ _id: req.params.id })
     .then((data) => resp.successr(res, data))
     .catch((error) => resp.errorr(res, error));
 };
-exports.deleteComment = async (req, res) => {
-  await Comment1.deleteOne({ _id: req.params.id })
+
+exports.deleteReply = async (req, res) => {
+  await Reply.deleteOne({ _id: req.params.id })
     .then((data) => resp.deleter(res, data))
     .catch((error) => resp.errorr(res, error));
 };
-exports.editComment = async (req, res) => {
-  await Comment1.findOneAndUpdate(
+
+exports.editReply = async (req, res) => {
+  await Reply.findOneAndUpdate(
     {
       _id: req.params.id,
     },
@@ -46,8 +51,8 @@ exports.editComment = async (req, res) => {
     .then((data) => resp.successr(res, data))
     .catch((error) => resp.errorr(res, error));
 };
-exports.countComment = async (req, res) => {
-  await Comment1.countDocuments()
+exports.countReply = async (req, res) => {
+  await Reply.countDocuments()
     .then((data) => resp.successr(res, data))
     .catch((error) => resp.errorr(res, error));
 };

@@ -1,14 +1,21 @@
 const express = require("express");
 const router = express.Router();
 
-const { addcomm } = require("../controllers/comment1");
+const {
+  addcomm,
+  allComment,
+  viewoneComment,
+  deleteComment,
+  editComment,
+  countComment,
+} = require("../controllers/comment1");
 
 router.post("/admin/addcomm", addcomm);
-//router.post("/admin/editCat/:id", editCat);
-//router.get("/admin/viewoneCat/:id", viewoneCat);
-//router.get("/admin/allCat", allCat);
-//router.get("/admin/deleteCat/:id", deleteCat);
-
+router.post("/admin/editComment/:id", editComment);
+router.get("/admin/viewoneComment/:id", viewoneComment);
+router.get("/admin/allComment", allComment);
+router.get("/admin/deleteComment/:id", deleteComment);
+router.get("/admin/countComment", countComment);
 module.exports = router;
 
 //http://localhost:5000/api/admin/allusers
