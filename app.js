@@ -96,3 +96,29 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
+
+app.get("/", (req, res) => {
+  res.send("Hello World!!!!");
+});
+
+//console.log(process.env.DATABASE);
+mongoose
+  .connect(process.env.DATABASE, {
+    useNewUrlParser: true,
+    // useFindAndModify: false,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    //useFindAndModify: false,
+  })
+  .then(() => {
+    console.log("DB CONNECTED SUCCEFULLY");
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+app.listen(process.env.PORT || 3000, () => {
+  console.log("Example app listening on port 3000");
+});
+
+//    http://localhost:5000/admin
