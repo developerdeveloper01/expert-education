@@ -22,9 +22,11 @@ const notification = require("./routes/notification");
 //const comment = require("./routes/comment");
 const comment1 = require("./routes/comment1");
 const pdffile = require("./routes/pdffile");
-
-
-
+const inquiry = require("./routes/inquiry");
+const plan = require("./routes/plan");
+const reply = require("./routes/reply");
+const enroll = require("./routes/enroll");
+//const enrollcourse = require("./routes/enrollcourse");
 var app = express();
 
 // view engine setup
@@ -51,8 +53,11 @@ app.use("/api", notification);
 app.use("/api", pdffile);
 //app.use("/api", comment);
 app.use("/api", comment1);
-
-
+app.use("/api", inquiry);
+app.use("/api", plan);
+app.use("/api", reply);
+app.use("/api", enroll);
+//app.use("/api",enrollcourse);
 const fs = require("fs");
 const AWS = require("aws-sdk");
 
@@ -91,3 +96,29 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
+
+app.get("/", (req, res) => {
+  res.send("Hello World!!!!");
+});
+
+//console.log(process.env.DATABASE);
+mongoose
+  .connect(process.env.DATABASE, {
+    useNewUrlParser: true,
+    // useFindAndModify: false,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    //useFindAndModify: false,
+  })
+  .then(() => {
+    console.log("DB CONNECTED SUCCEFULLY");
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+app.listen(process.env.PORT || 3000, () => {
+  console.log("Example app listening on port 3000");
+});
+
+//    http://localhost:5000/admin
